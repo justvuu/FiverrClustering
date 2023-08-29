@@ -358,115 +358,97 @@ kmeans.fit(input_data)
 labels = kmeans.predict(feature_vectors)
 kmeans.print_clusters(input_data, data)
 
-cluster  = 0
-attribute = "five_star"
-data['Cluster Label'] = kmeans.predict(feature_vectors)
-cluster_1_data = data[data['Cluster Label'] == cluster]
+root = tk.Tk()
 
-# Count the frequency of each language in Cluster 1
-language_counts = cluster_1_data[attribute].value_counts()
+root.title("Clustering")
+root.geometry("800x600")
 
-# Create a bar chart of the language distribution
-plt.figure(figsize=(10, 6))
-language_counts.plot(kind='bar')
-plt.xlabel(attribute.capitalize())
-plt.ylabel('Frequency')
-plt.title(f'{attribute.capitalize()} Distribution in Cluster {cluster}')
-plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
-plt.tight_layout()
-plt.show()
-
-# root = tk.Tk()
-
-# root.title("Clustering")
-# root.geometry("800x600")
-
-# location_var = tk.StringVar()
-# languages_var = tk.StringVar()
-# completed_amount_var = tk.StringVar()
-# level_var = tk.StringVar()
-# rating_score_var = tk.StringVar()
-# reviews_var = tk.StringVar()
-# collect_count_var = tk.StringVar()
-# tags_var = tk.StringVar()
-# five_star_var = tk.StringVar()
-# four_star_var = tk.StringVar()
-# three_star_var = tk.StringVar()
-# two_star_var = tk.StringVar()
-# one_star_var = tk.StringVar()
-# pro_var = tk.StringVar()
-# description_var = tk.StringVar()
-# programming_language_var = tk.StringVar()
-# expertise_var = tk.StringVar()
-# frontend_framework_var = tk.StringVar()
-# backend_framework_var=tk.StringVar()
+location_var = tk.StringVar()
+languages_var = tk.StringVar()
+completed_amount_var = tk.StringVar()
+level_var = tk.StringVar()
+rating_score_var = tk.StringVar()
+reviews_var = tk.StringVar()
+collect_count_var = tk.StringVar()
+tags_var = tk.StringVar()
+five_star_var = tk.StringVar()
+four_star_var = tk.StringVar()
+three_star_var = tk.StringVar()
+two_star_var = tk.StringVar()
+one_star_var = tk.StringVar()
+pro_var = tk.StringVar()
+description_var = tk.StringVar()
+programming_language_var = tk.StringVar()
+expertise_var = tk.StringVar()
+frontend_framework_var = tk.StringVar()
+backend_framework_var=tk.StringVar()
 
 
-# def submit():
-#   location = location_var.get()
-#   languages = languages_var.get()
-#   completed_amount = completed_amount_var.get()
-#   level = level_var.get()
-#   rating_score = rating_score_var.get()
-#   reviews = reviews_var.get()
-#   collect_count = collect_count_var.get()
-#   tags = tags_var.get()
-#   five_star = five_star_var.get()
-#   four_star = four_star_var.get()
-#   three_star = three_star_var.get()
-#   two_star = two_star_var.get()
-#   one_star = one_star_var.get()
-#   pro = pro_var.get()
-#   description = description_var.get()
-#   programming_language = programming_language_var.get()
-#   expertise = expertise_var.get()
-#   frontend_framework = frontend_framework_var.get()
-#   backend_framework = backend_framework_var.get()
+def submit():
+  location = location_var.get()
+  languages = languages_var.get()
+  completed_amount = completed_amount_var.get()
+  level = level_var.get()
+  rating_score = rating_score_var.get()
+  reviews = reviews_var.get()
+  collect_count = collect_count_var.get()
+  tags = tags_var.get()
+  five_star = five_star_var.get()
+  four_star = four_star_var.get()
+  three_star = three_star_var.get()
+  two_star = two_star_var.get()
+  one_star = one_star_var.get()
+  pro = pro_var.get()
+  description = description_var.get()
+  programming_language = programming_language_var.get()
+  expertise = expertise_var.get()
+  frontend_framework = frontend_framework_var.get()
+  backend_framework = backend_framework_var.get()
 
-#   input_data = get_feature_vector(location, languages, completed_amount, level, rating_score, reviews, collect_count, tags, five_star, four_star, three_star, two_star, one_star, pro,
-#   									description, programming_language, expertise, frontend_framework, backend_framework)
+  input_data = get_feature_vector(location, languages, completed_amount, level, rating_score, reviews, collect_count, tags, five_star, four_star, three_star, two_star, one_star, pro,
+  									description, programming_language, expertise, frontend_framework, backend_framework)
 
-#   prediction = kmeans.predict([input_data.astype(float)])
+  prediction = kmeans.predict([input_data.astype(float)])
 
-#   prediction_label.config(text=f"Predicted Cluster: {prediction[0]}")
+  prediction_label.config(text=f"Predicted Cluster: {prediction[0]}")
 
 
-# labels_and_entries = [
-#     ("Location", location_var), ("Languages", languages_var), ("Completed amount", completed_amount_var),
-#     ("Level", level_var), ("Rating score", rating_score_var), ("Reviews", reviews_var),
-#     ("Collect count", collect_count_var), ("Tags", tags_var), ("Five star", five_star_var),
-#     ("Four star", four_star_var), ("Three star", three_star_var), ("Two star", two_star_var),
-#     ("One star", one_star_var), ("Pro", pro_var), ("Description", description_var),
-#     ("Programming language", programming_language_var), ("Expertise", expertise_var),
-#     ("Frontend framework", frontend_framework_var), ("Backend framework", backend_framework_var)
-# ]
+labels_and_entries = [
+    ("Location", location_var), ("Languages", languages_var), ("Completed amount", completed_amount_var),
+    ("Level", level_var), ("Rating score", rating_score_var), ("Reviews", reviews_var),
+    ("Collect count", collect_count_var), ("Tags", tags_var), ("Five star", five_star_var),
+    ("Four star", four_star_var), ("Three star", three_star_var), ("Two star", two_star_var),
+    ("One star", one_star_var), ("Pro", pro_var), ("Description", description_var),
+    ("Programming language", programming_language_var), ("Expertise", expertise_var),
+    ("Frontend framework", frontend_framework_var), ("Backend framework", backend_framework_var)
+]
 
-# left_column = tk.Frame(root)
-# left_column.grid(row=0, column=0, padx=20, pady=20, sticky="nw")
+left_column = tk.Frame(root)
+left_column.grid(row=0, column=0, padx=20, pady=20, sticky="nw")
 
-# row = 0
-# for i, (label_text, var) in enumerate(labels_and_entries[:len(labels_and_entries)//2+1]):
-#     label = tk.Label(left_column, text=label_text)
-#     label.grid(row=row, column=0, sticky="e", padx=10, pady=5)
-#     entry = tk.Entry(left_column, textvariable=var)
-#     entry.grid(row=row, column=1, padx=10, pady=5)
-#     row += 1
+row = 0
+for i, (label_text, var) in enumerate(labels_and_entries[:len(labels_and_entries)//2+1]):
+    label = tk.Label(left_column, text=label_text)
+    label.grid(row=row, column=0, sticky="e", padx=10, pady=5)
+    entry = tk.Entry(left_column, textvariable=var)
+    entry.grid(row=row, column=1, padx=10, pady=5)
+    row += 1
 
-# right_column = tk.Frame(root)
-# right_column.grid(row=0, column=1, padx=20, pady=20, sticky="ne")
+right_column = tk.Frame(root)
+right_column.grid(row=0, column=1, padx=20, pady=20, sticky="ne")
 
-# for i, (label_text, var) in enumerate(labels_and_entries[len(labels_and_entries)//2+1:], start=row):
-#     label = tk.Label(right_column, text=label_text)
-#     label.grid(row=i, column=0, sticky="e", padx=10, pady=5)
-#     entry = tk.Entry(right_column, textvariable=var)
-#     entry.grid(row=i, column=1, padx=10, pady=5)
+for i, (label_text, var) in enumerate(labels_and_entries[len(labels_and_entries)//2+1:], start=row):
+    label = tk.Label(right_column, text=label_text)
+    label.grid(row=i, column=0, sticky="e", padx=10, pady=5)
+    entry = tk.Entry(right_column, textvariable=var)
+    entry.grid(row=i, column=1, padx=10, pady=5)
 
-# sub_btn = tk.Button(root, text='Submit', command=submit)
-# sub_btn.grid(row=row, column=1, columnspan=2, pady=10)
-# prediction_label = tk.Label(root, text="", font=("Helvetica", 12, "bold"))
-# prediction_label.grid(row=row + 1, column=0, columnspan=2, pady=10)
+sub_btn = tk.Button(root, text='Submit', command=submit)
+sub_btn.grid(row=row, column=1, columnspan=2, pady=10)
+prediction_label = tk.Label(root, text="", font=("Helvetica", 12, "bold"))
+prediction_label.grid(row=row + 1, column=0, columnspan=2, pady=10)
 
-# root.mainloop()
+root.mainloop()
 
 
 
