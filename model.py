@@ -9,17 +9,12 @@ class KMeans:
 
     def fit(self, X):
         np.random.seed(self.random_state)
-
-        # Randomly initialize centroids
         idx = np.random.choice(X.shape[0], self.n_clusters, replace=False)
         self.centroids = X[idx]
 
         for _ in range(self.max_iters):
             labels = self._assign_labels(X)
             new_centroids = self._update_centroids(X, labels)
-            # print("labels: ", labels)
-
-            # Check for convergence
             if np.all(self.centroids == new_centroids):
                 break
 
@@ -47,36 +42,19 @@ class KMeans:
         for i in range(self.n_clusters):
             print(f"--Centroid {i}: {self.centroids[i]}")
             cluster_indices = np.where(labels == i)[0]
-            # print(f"Items in Cluster {i}:")
             for idx in cluster_indices:
-                # print(f"Username: {usernames[idx]}")
-                # print(X[idx])
                 print(data['username'][idx], end = " ")
             print("\n")
-
-        # for i in range(self.n_clusters):
-        #     print(f"Centroid {i}: {self.centroids[i]}")
-        #     cluster_items = X[labels == i]
-        #     print(f"Items in Cluster {i}:")
-        #     for item in cluster_items:
-        #         print(item)
-        #     print("\n")
 
     def extract_features(self, X, cluster_labels):
         cluster_features = []
         for cluster_label in range(self.n_clusters):
-            # Select data points assigned to the current cluster
             cluster_data = X[np.array(cluster_labels) == cluster_label]
             
-            # Calculate statistics or features for the cluster
             cluster_mean = np.mean(cluster_data, axis=0)
             cluster_std = np.std(cluster_data, axis=0)
             cluster_max = np.max(cluster_data, axis=0)
             cluster_min = np.min(cluster_data, axis=0)
-            
-            # You can compute additional features as needed
-            
-            # Store the features for this cluster
             cluster_features.append({
                 "Cluster Label": cluster_label,
                 "Mean": cluster_mean,
@@ -85,7 +63,6 @@ class KMeans:
                 "Min": cluster_min,
             })
 
-        # Display the features for each cluster
         for cluster_feature in cluster_features:
             print(f"Cluster {cluster_feature['Cluster Label']} Features:")
             print(f"Mean: {cluster_feature['Mean']}")
